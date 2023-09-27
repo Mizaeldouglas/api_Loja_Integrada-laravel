@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\CartController;
 use App\Http\Controllers\api\CupomController;
 use App\Http\Controllers\api\ProductController;
 use Illuminate\Http\Request;
@@ -20,4 +21,12 @@ Route::prefix('/v1')->group(function () {
     Route::resource('/cupons', CupomController::class)->only([
         'index', 'show', 'store', 'update', 'destroy'
     ]);
+
+    Route::resource('/carts', CartController::class)->only([
+        'index', 'show', 'store', 'update', 'destroy'
+    ]);
+
+
+    Route::post('/cart/{session_id}', [CartController::class, 'adicionarProdutoAoCarrinho']);
+    Route::post('/cart/{session_id}/add-coupon-product/{cupom}', [CartController::class, 'adicionarCupomEProdutoAoCarrinho']);
 });
