@@ -1,3 +1,7 @@
+# Documentação https://documenter.getpostman.com/view/20955040/2s9YJZ3jW7
+
+## Api de uma Loja integrada com carrinho de compras
+
 O carrinho de compras é parte fundamental de um ecommerce. A partir dele é que o processo de compra se inicia. Na Loja Integrada um produto só pode ser comprado se ele tiver sido adicionado ao carrinho.
 
 Uma API de carrinho de compras tem que ser rápida e consistente. A quantidade de requisições nela é bem alta e quanto mais lenta a resposta, menos as pessoas compram. Mas a velocidade não é tudo! Quando a API não consegue responder corretamente às requisições e não tem os tratamentos de erro corretos isso gera inconsistência e os clientes desistem das compras pois acham que a loja não é confiável.

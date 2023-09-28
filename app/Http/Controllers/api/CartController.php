@@ -32,6 +32,42 @@ class CartController extends Controller
         return response()->json($response, 200);
     }
 
+    public function buscarCarrinhoPorSessionId(Request $request, $session_id)
+    {
+        $sessionId = $session_id;
+        $cart = Cart::where('session_id', $sessionId)->first();
+        $formattedCarts = [];
+
+        if (!$cart) {
+            return response()->json(['error' => 'Carrinho não encontrado'], 404);
+        }
+
+
+
+        $response = [
+            'Carts' => [
+                [
+                    'session_id' => $cart->session_id,
+                    'original_value' => $cart->original_value,
+                    'price' => $cart->price,
+                    'total_quantity' => $cart->total_quantity,
+                    'products' => []
+                ]
+            ]
+        ];
+
+        foreach ($cart->products as $product) {
+            $response['Carts'][0]['products'][] = [
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => $product->pivot->quantity
+            ];
+        }
+
+        return response()->json($response, 200);
+    }
+
     public function adicionarCupomEProdutoAoCarrinho(Request $request, $session_id, $cupom)
     {
         $cupomValue = $request->query('tag');
@@ -68,8 +104,6 @@ class CartController extends Controller
     }
 
 
-
-
     public function index()
     {
         $carts = Cart::all();
@@ -99,32 +133,5 @@ class CartController extends Controller
         }
 
         return response()->json(['Carts' => $formattedCarts], 200);
-    }
-
-
-    public function store(Request $request)
-    {
-
-        return response()->json(201);
-    }
-
-    public function show(string $id)
-    {
-
-
-        return response()->json(200);
-    }
-
-
-    public function update(Request $request, string $id)
-    {
-
-        return response()->json(200);
-    }
-
-    public function destroy(string $id)
-    {
-
-        return response()->json('Deletado Com sucesso!!', 204);
     }
 }

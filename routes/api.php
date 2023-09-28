@@ -29,4 +29,5 @@ Route::prefix('/v1')->group(function () {
 
     Route::post('/cart/{session_id}', [CartController::class, 'adicionarProdutoAoCarrinho']);
     Route::post('/cart/{session_id}/add-coupon-product/{cupom}', [CartController::class, 'adicionarCupomEProdutoAoCarrinho']);
+    Route::get('/cart/{session_id}', [CartController::class, 'buscarCarrinhoPorSessionId']);
 });
