@@ -1,22 +1,22 @@
-# Documentação https://documenter.getpostman.com/view/20955040/2s9YJZ3jW7
 
-## Api de uma Loja integrada com carrinho de compras
+# Api de uma Loja integrada com carrinho de compras
 
-O carrinho de compras é parte fundamental de um ecommerce. A partir dele é que o processo de compra se inicia. Na Loja Integrada um produto só pode ser comprado se ele tiver sido adicionado ao carrinho.
 
-Uma API de carrinho de compras tem que ser rápida e consistente. A quantidade de requisições nela é bem alta e quanto mais lenta a resposta, menos as pessoas compram. Mas a velocidade não é tudo! Quando a API não consegue responder corretamente às requisições e não tem os tratamentos de erro corretos isso gera inconsistência e os clientes desistem das compras pois acham que a loja não é confiável.
+https://github.com/Mizaeldouglas/api_Loja_Integrada-laravel/assets/89351018/4ac8d7a4-a595-4510-b361-c4e115e787fe
 
-Pense nas possibilidades reais de uma loja. Os produtos acabam pois seu estoque total foi vendido, alguns produtos tem o seu preço (ou nome) alterado, outros são desabilitados, um carrinho pode ser abandonado. Qual será o comportamento do seu carrinho quando um produto não está mais disponível? Um visitante que deixou o carrinho de compras preenchido quando voltar à loja quer ver o seu carrinho de volta, como mostrar o carrinho correto?
+# Desafio da API de Carrinho de Compras
 
-Documentação: É super importante, você deve documentar a sua API para que outros humanos possam ler e usar a API. Lembre-se também de documentar como você inicia o projeto e como soluciona os problemas mais comuns na hora de rodar e fazer atualizações no seu código.
+Este é um desafio de desenvolvimento de uma API de Carrinho de Compras integrada a uma loja virtual, criada utilizando Laravel e MySQL. O objetivo é criar uma API rápida, consistente e confiável para gerenciar o processo de compra em uma loja online.
 
-Sabemos que a API do Carrinho depende de outras APIs ou de dados pré-existentes no banco de dados e, para isso, deixamos você livre para decidir como quer fazer essa parte adicional.
+## Documentação da API
 
-## Algumas possibilidades: Fazer um mock dos dados de produtos ou criar uma API simples para retornar os dados de um produto. Essa não é uma parte crítica, então foque nos requisitos do desafio
+A documentação completa da API está disponível [aqui](https://documenter.getpostman.com/view/20955040/2s9YJZ3jW7). Certifique-se de consultar esta documentação para entender como utilizar e testar a API.
 
-O que é requerido:
+## Requisitos do Desafio
 
--   Adicionar um item no carrinho
+A API de Carrinho de Compras deve atender aos seguintes requisitos:
+
+-   Adicionar um item ao carrinho
 -   Remover um item do carrinho
 -   Atualizar a quantidade de um item no carrinho
 -   Limpar o carrinho
@@ -26,13 +26,54 @@ O que é requerido:
 -   Recuperar o carrinho
 -   Retornar um JSON com o carrinho completo (para ser usado no frontend)
 
-Siga esses pontos:
+## Tecnologias Utilizadas
 
--   Escolha a linguagem de programação de sua preferência
--   Utilize docker para o criar o ambiente de desenvolvimento
--   Você não precisa construir nenhum HTML nesse desafio
--   Você precisa fazer o commit de todos os arquivos necessários para rodar o projeto (use mensagens de commit que façam sentido)
--   Testes e BDD são bem-vindos
--   Documente a sua API (gere uma documentação legível para humanos
+-   Laravel: Uma estrutura de aplicativo web em PHP que oferece ferramentas poderosas para o desenvolvimento de APIs.
+-   MySQL: Um sistema de gerenciamento de banco de dados relacional para armazenar e recuperar dados.
 
-Entrega: Deve ser feita em um repositório público no github ou bitbucket com todos os arquivos necessários para rodar o projeto e o histórico de todos os commits, assim como documentações e arquivos auxiliares.
+## Iniciando o Projeto
+
+Para iniciar o projeto, siga os seguintes passos:
+
+1. Clone este repositório para sua máquina local.
+
+```bash
+git clone https://github.com/seu-usuario/desafio-carrinho-de-compras.git
+cd desafio-carrinho-de-compras
+```
+Configure o arquivo .env para se adequar ao seu ambiente (por exemplo, configurações de banco de dados).
+Execute as migrações do banco de dados para criar as tabelas necessárias.
+
+```bash
+php artisan migrate
+```
+Inicie o servidor de desenvolvimento.
+
+```bash
+php artisan serve
+```
+Agora você pode acessar a API localmente em http://localhost:8000.
+
+## Testes
+
+Os testes são bem-vindos para garantir a robustez da API. Você pode executar os testes usando o seguinte comando:
+
+```bash
+php artisan test
+```
+## Documentação
+
+Documentar a API é crucial para que outros desenvolvedores possam utilizá-la facilmente. Certifique-se de manter a documentação atualizada e legível para humanos. Você pode usar ferramentas como o Postman ou o Swagger para ajudar na documentação.
+
+### Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para enviar pull requests para melhorias, correções de bugs ou novos recursos.
+
+Espero que este README tenha fornecido informações úteis sobre o desafio da API de Carrinho de Compras. Se tiver alguma dúvida ou precisar de ajuda, não hesite em entrar em contato. Boa sorte e feliz codificação! 🚀👨‍💻👩‍💻
+
+Autor: Mizael Douglas de Mello <br>
+Contato: [meu site](https://www.mizaeldouglas.com.br)
+
+
+
+
