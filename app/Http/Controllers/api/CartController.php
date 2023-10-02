@@ -36,7 +36,7 @@ class CartController extends Controller
     {
         $sessionId = $session_id;
         $cart = Cart::where('session_id', $sessionId)->first();
-        $formattedCarts = [];
+
 
         if (!$cart) {
             return response()->json(['error' => 'Carrinho não encontrado'], 404);
@@ -133,5 +133,47 @@ class CartController extends Controller
         }
 
         return response()->json(['Carts' => $formattedCarts], 200);
+    }
+
+    public function deleterCupomEProdutoNoCarrinho(Request $request, $id, $session_id)
+    {
+        $cart = Cart::where('session_id', $session_id)->first();
+
+        if (!$cart) {
+            return response()->json(['Error' => 'Carrinho não encontrado!'], 404);
+        }
+
+        $cart->products()->detach();
+
+        $cart->delete();
+
+        Cart::where('session_id', $session_id)->delete();
+
+        return response()->json(['Menssagem' => 'Excluido com Sucesso!!'], 200);
+    }
+
+    public function atualizarCupomEProdutoNoCarrinho($session_id, $id, Request $request)
+    {
+
+        $request->validate([
+            'quantity' => 'required|min:1'
+        ]);
+
+        $cart = Cart::where('session_id', $session_id)->first();
+
+        if (!$cart) {
+            return response()->json(['Error' => 'Produto não encontrado no carrinho'], 404);
+        }
+        $product_id = $id;
+        $new_quantity = $request->input('quantity');
+
+        if (!$cart->products->contains($product_id)) {
+            return response()->json(['Error' => 'Produto não encontrado no carrinho!'], 404);
+        }
+
+        $cart->products()->updateExistingPivot($product_id, ['quantity' => $new_quantity]);
+
+
+        return response()->json(['Mensagem' => 'Atualizado com Sucesso!!'], 200);
     }
 }

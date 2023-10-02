@@ -30,4 +30,6 @@ Route::prefix('/v1')->group(function () {
     Route::post('/cart/{session_id}', [CartController::class, 'adicionarProdutoAoCarrinho']);
     Route::post('/cart/{session_id}/add-coupon-product/{cupom}', [CartController::class, 'adicionarCupomEProdutoAoCarrinho']);
     Route::get('/cart/{session_id}', [CartController::class, 'buscarCarrinhoPorSessionId']);
+    Route::delete('/cart/{session_id}/{id}', [CartController::class, 'deleterCupomEProdutoNoCarrinho']);
+    Route::put('/cart/{seesion_id}/{id}', [CartController::class, 'atualizarCupomEProdutoNoCarrinho']);
 });
