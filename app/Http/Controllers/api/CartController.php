@@ -42,15 +42,27 @@ class CartController extends Controller
             return response()->json(['error' => 'Carrinho não encontrado'], 404);
         }
 
+        $totalQuantity = 0;
+        $originalValue = 0;
+
+        foreach ($cart->products as $product) {
+            $totalQuantity += $product->pivot->quantity;
+            $originalValue += $product->price;
+        }
+
+        $cart->total_quantity = $totalQuantity;
+        $cart->original_value = $originalValue;
+        $cart->save();
+
 
 
         $response = [
             'Carts' => [
                 [
                     'session_id' => $cart->session_id,
-                    'original_value' => $cart->original_value,
-                    'price' => $cart->price,
-                    'total_quantity' => $cart->total_quantity,
+                    // 'original_value' => $cart->price,
+                    'total_price' => $originalValue,
+                    'total_quantity' => $totalQuantity,
                     'products' => []
                 ]
             ]
